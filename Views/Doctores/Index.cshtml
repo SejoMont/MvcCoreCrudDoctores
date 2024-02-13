@@ -1,0 +1,34 @@
+﻿@model List<Doctor>
+
+<h1>Crud Doctores Ado Net</h1>
+<p>
+    <a asp-controller="Doctores" asp-action="Create">
+        New Doctor
+    </a>
+</p>
+
+<table class="table table-striped text-center" style="margin: 0 auto">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Especialidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Doctor doc in Model)
+        {
+            <tr>
+                <td>@doc.Apellido</td>
+                <td>@doc.Especialidad</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Doctores", new { id = doc.DoctorNo })
+                    |
+                    @Html.ActionLink("Update", "Edit", "Doctores", new { id = doc.DoctorNo })
+                    |
+                    @Html.ActionLink("Borrar", "Delete", "Doctores", new { id = doc.DoctorNo })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
